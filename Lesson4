@@ -1,0 +1,32 @@
+## Zadanie1
+import numpy as np
+import pandas as pd
+
+author = pd.DataFrame({'author_id':[1, 2, 3],
+                      'author_name':['Тургенев', 'Чехов', 'Островский']})
+book = pd.DataFrame({'author_id':[1, 1, 1, 2, 2, 3, 3],
+                    'book_title':['Отцы и дети', 'Рудин', 'Дворянское гнездо', 'Толстый и тонкий', 'Дама с собачкой', 'Гроза', 'Таланты и поклонники'],
+                    'price':[450, 300, 350, 500, 450, 370, 290]})
+print('DataFrame author')
+print(author)
+print()
+print('DataFrame book')
+print(book)
+print()
+##Zadanie2
+authors_price = pd.concat([author, book],axis = 1)
+print('Concatinations of two DataFrames')
+print(authors_price)
+print(authors_price.info())
+print()
+
+##Zadanie3
+autors_price_sort = authors_price.sort_values(by='price',  ascending=False)
+autors_price_sort.index = pd.RangeIndex(len(autors_price_sort.index))
+print(autors_price_sort)
+top5 = autors_price_sort.loc[0:4]
+print('Top5')
+print(top5)
+print()
+##Zadanie4
+##authors_stat = 
