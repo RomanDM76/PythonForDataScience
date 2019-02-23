@@ -1,0 +1,235 @@
+Задание 1
+Импортируйте библиотеку Numpy и дайте ей псевдоним np.
+Создайте массив Numpy под названием a размером 5x2, то есть состоящий из 5 строк и 2 столбцов.
+Первый столбец должен содержать числа 1, 2, 3, 3, 1, а второй - числа 6, 8, 11, 10, 7.
+Будем считать, что каждый столбец - это признак, а строка - наблюдение.
+Затем найдите среднее значение по каждому признаку, используя метод mean массива Numpy.
+Результат запишите в массив mean_a, в нем должно быть 2 элемента.
+
+Задание 2
+Вычислите массив a_centered, отняв от значений массива а 
+средние значения соответствующих признаков, содержащиеся в массиве mean_a.
+Вычисление должно производиться в одно действие.
+Получившийся массив должен иметь размер 5x2.
+
+Задание 3
+Найдите скалярное произведение столбцов массива a_centered.
+В результате должна получиться величина a_centered_sp. 
+Затем поделите a_centered_sp на N-1, где N - число наблюдений.
+
+* Задание 4
+Число, которое мы получили в конце задания 3 является 
+ковариацией двух признаков, содержащихся в массиве а.
+В задании 3 мы делили сумму произведений центрированных 
+признаков на N-1, а не на N, поэтому полученная нами величина 
+является несмещенной оценкой ковариации.
+Подробнее узнать о ковариации можно здесь:
+Ссылка
+В этом задании проверьте получившееся число, вычислив
+ковариацию еще одним способом - с помощью функции np.cov.
+В качестве аргумента m функция np.cov должна принимать транспонированный массив a.
+В получившейся ковариационной матрице (массив Numpy размером 2x2) искомое значение 
+ковариации будет равно элементу в строке с индексом 0 и столбце с индексом 1.
+
+1
+Microsoft Windows [Version 10.0.17134.345]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2018. Все права защищены.
+
+C:\Users\Iam>python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+Collecting numpy
+  Downloading https://files.pythonhosted.org/packages/41/b8/3a6b07352c2542ca1c89be7583e7ca07bf513895b6ac59ae008054f326b1/numpy-1.16.1-cp37-cp37m-win_amd64.whl (11.9MB)
+    100% |--------------------------------| 11.9MB 581kB/s
+Collecting scipy
+  Downloading https://files.pythonhosted.org/packages/58/f0/d00c0e01e077da883f030af3ff5ce653a0e9e4786f83faa89a6e18c98612/scipy-1.2.1-cp37-cp37m-win_amd64.whl (30.0MB)
+    100% |--------------------------------| 30.0MB 220kB/s
+Collecting matplotlib
+  Downloading https://files.pythonhosted.org/packages/5c/ee/efaf04efc763709f6840cd8d08865d194f7453f43e98d042c92755cdddec/matplotlib-3.0.2-cp37-cp37m-win_amd64.whl (8.9MB)
+    100% |--------------------------------| 8.9MB 620kB/s
+Collecting ipython
+  Downloading https://files.pythonhosted.org/packages/f0/b4/a9ea018c73a84ee6280b2e94a1a6af8d63e45903eac2da0640fa63bca4db/ipython-7.2.0-py3-none-any.whl (765kB)
+    100% |--------------------------------| 768kB 1.1MB/s
+Collecting jupyter
+  Downloading https://files.pythonhosted.org/packages/83/df/0f5dd132200728a86190397e1ea87cd76244e42d39ec5e88efd25b2abd7e/jupyter-1.0.0-py2.py3-none-any.whl
+Collecting pandas
+  Downloading https://files.pythonhosted.org/packages/61/f4/4ede3085c0f11c3a4f27fb97d9937b8847003bf8aa737df07cdf9600d8b2/pandas-0.24.1-cp37-cp37m-win_amd64.whl (9.0MB)
+    100% |--------------------------------| 9.0MB 501kB/s
+Collecting sympy
+  Downloading https://files.pythonhosted.org/packages/dd/f6/ed485ff22efdd7b371d0dbbf6d77ad61c3b3b7e0815a83c89cbb38ce35de/sympy-1.3.tar.gz (5.9MB)
+    100% |--------------------------------| 5.9MB 1.0MB/s
+Collecting nose
+  Downloading https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl (154kB)
+    100% |--------------------------------| 163kB 655kB/s
+Collecting kiwisolver>=1.0.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/7c/be/7ae355b45699460e369ebf88d86058fca26827933974cc3f6b6b7800a324/kiwisolver-1.0.1-cp37-none-win_amd64.whl (57kB)
+    100% |--------------------------------| 61kB 1.3MB/s
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
+Collecting python-dateutil>=2.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/41/17/c62faccbfbd163c7f57f3844689e3a78bae1f403648a6afb1d0866d87fbb/python_dateutil-2.8.0-py2.py3-none-any.whl (226kB)
+    100% |--------------------------------| 235kB 1.1MB/s
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/de/0a/001be530836743d8be6c2d85069f46fecf84ac6c18c7f5fb8125ee11d854/pyparsing-2.3.1-py2.py3-none-any.whl (61kB)
+    100% |--------------------------------| 71kB 131kB/s
+Collecting colorama; sys_platform == "win32" (from ipython)
+  Downloading https://files.pythonhosted.org/packages/4f/a6/728666f39bfff1719fc94c481890b2106837da9318031f71a8424b662e12/colorama-0.4.1-py2.py3-none-any.whl
+Collecting jedi>=0.10 (from ipython)
+  Downloading https://files.pythonhosted.org/packages/c2/bc/54d53f5bc4658380d0eca9055d72be4df45e5bfd91a4bac97da224a92553/jedi-0.13.2-py2.py3-none-any.whl (177kB)
+    100% |--------------------------------| 184kB 936kB/s
+Collecting decorator (from ipython)
+  Downloading https://files.pythonhosted.org/packages/f1/cd/7c8240007e9716b14679bc217a1baefa4432aa30394f7e2ec40a52b1a708/decorator-4.3.2-py2.py3-none-any.whl
+Collecting pickleshare (from ipython)
+  Downloading https://files.pythonhosted.org/packages/9a/41/220f49aaea88bc6fa6cba8d05ecf24676326156c23b991e80b3f2fc24c77/pickleshare-0.7.5-py2.py3-none-any.whl
+Collecting prompt-toolkit<2.1.0,>=2.0.0 (from ipython)
+  Downloading https://files.pythonhosted.org/packages/65/c2/e676da701cda11b32ff42eceb44aa7d8934b597d604bb5e94c0283def064/prompt_toolkit-2.0.8-py3-none-any.whl (342kB)
+    100% |--------------------------------| 348kB 936kB/s
+Collecting backcall (from ipython)
+  Downloading https://files.pythonhosted.org/packages/84/71/c8ca4f5bb1e08401b916c68003acf0a0655df935d74d93bf3f3364b310e0/backcall-0.1.0.tar.gz
+Collecting pygments (from ipython)
+  Downloading https://files.pythonhosted.org/packages/13/e5/6d710c9cf96c31ac82657bcfb441df328b22df8564d58d0c4cd62612674c/Pygments-2.3.1-py2.py3-none-any.whl (849kB)
+    100% |--------------------------------| 849kB 1.1MB/s
+Requirement already satisfied: setuptools>=18.5 in c:\users\iam\appdata\local\programs\python\python37\lib\site-packages (from ipython) (39.0.1)
+Collecting traitlets>=4.2 (from ipython)
+  Downloading https://files.pythonhosted.org/packages/93/d6/abcb22de61d78e2fc3959c964628a5771e47e7cc60d53e9342e21ed6cc9a/traitlets-4.3.2-py2.py3-none-any.whl (74kB)
+    100% |--------------------------------| 81kB 1.5MB/s
+Collecting qtconsole (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/e0/7a/8aefbc0ed078dec7951ac9a06dcd1869243ecd7bcbce26fa47bf5e469a8f/qtconsole-4.4.3-py2.py3-none-any.whl (113kB)
+    100% |--------------------------------| 122kB 325kB/s
+Collecting jupyter-console (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/cb/ee/6374ae8c21b7d0847f9c3722dcdfac986b8e54fa9ad9ea66e1eb6320d2b8/jupyter_console-6.0.0-py2.py3-none-any.whl
+Collecting ipywidgets (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/30/9a/a008c7b1183fac9e52066d80a379b3c64eab535bd9d86cdc29a0b766fd82/ipywidgets-7.4.2-py2.py3-none-any.whl (111kB)
+    100% |--------------------------------| 112kB 655kB/s
+Collecting ipykernel (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/d8/b0/f0be5c5ab335196f5cce96e5b889a4fcf5bfe462eb0acc05cd7e2caf65eb/ipykernel-5.1.0-py3-none-any.whl (113kB)
+    100% |--------------------------------| 122kB 1.3MB/s
+Collecting nbconvert (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/b8/39/1e67fea74dc9577cc49f9863fe3ec824e525d1304ab6027d95a94cd586f5/nbconvert-5.4.1-py2.py3-none-any.whl (407kB)
+    100% |--------------------------------| 409kB 655kB/s
+Collecting notebook (from jupyter)
+  Downloading https://files.pythonhosted.org/packages/f8/a6/dbdf0954d073ab2cf5421cad20334d1e4c780da37205c04522c045298f67/notebook-5.7.4-py2.py3-none-any.whl (9.0MB)
+    100% |--------------------------------| 9.0MB 678kB/s
+Collecting pytz>=2011k (from pandas)
+  Downloading https://files.pythonhosted.org/packages/61/28/1d3920e4d1d50b19bc5d24398a7cd85cc7b9a75a490570d5a30c57622d34/pytz-2018.9-py2.py3-none-any.whl (510kB)
+    100% |--------------------------------| 512kB 1.1MB/s
+Collecting mpmath>=0.19 (from sympy)
+  Downloading https://files.pythonhosted.org/packages/ca/63/3384ebb3b51af9610086b23ea976e6d27d6d97bf140a76a365bd77a3eb32/mpmath-1.1.0.tar.gz (512kB)
+    100% |--------------------------------| 522kB 1.1MB/s
+Collecting six (from cycler>=0.10->matplotlib)
+  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+Collecting parso>=0.3.0 (from jedi>=0.10->ipython)
+  Downloading https://files.pythonhosted.org/packages/f9/95/917fbfaca4c173651cb8f02bd50712414a0e2a154c8b7077a80027c0864b/parso-0.3.3-py2.py3-none-any.whl (93kB)
+    100% |--------------------------------| 102kB 602kB/s
+Collecting wcwidth (from prompt-toolkit<2.1.0,>=2.0.0->ipython)
+  Downloading https://files.pythonhosted.org/packages/7e/9f/526a6947247599b084ee5232e4f9190a38f398d7300d866af3ab571a5bfe/wcwidth-0.1.7-py2.py3-none-any.whl
+Collecting ipython-genutils (from traitlets>=4.2->ipython)
+  Downloading https://files.pythonhosted.org/packages/fa/bc/9bd3b5c2b4774d5f33b2d544f1460be9df7df2fe42f352135381c347c69a/ipython_genutils-0.2.0-py2.py3-none-any.whl
+Collecting jupyter-core (from qtconsole->jupyter)
+  Downloading https://files.pythonhosted.org/packages/1d/44/065d2d7bae7bebc06f1dd70d23c36da8c50c0f08b4236716743d706762a8/jupyter_core-4.4.0-py2.py3-none-any.whl (126kB)
+    100% |--------------------------------| 133kB 655kB/s
+Collecting jupyter-client>=4.1 (from qtconsole->jupyter)
+  Downloading https://files.pythonhosted.org/packages/3b/c3/3043fe9ffd140d03c9d091a056794ccdc427c56ec19b8eea74f9ea0a498f/jupyter_client-5.2.4-py2.py3-none-any.whl (89kB)
+    100% |--------------------------------| 92kB 921kB/s
+Collecting nbformat>=4.2.0 (from ipywidgets->jupyter)
+  Downloading https://files.pythonhosted.org/packages/da/27/9a654d2b6cc1eaa517d1c5a4405166c7f6d72f04f6e7eea41855fe808a46/nbformat-4.4.0-py2.py3-none-any.whl (155kB)
+    100% |--------------------------------| 163kB 1.1MB/s
+Collecting widgetsnbextension~=3.4.0 (from ipywidgets->jupyter)
+  Downloading https://files.pythonhosted.org/packages/8a/81/35789a3952afb48238289171728072d26d6e76649ddc8b3588657a2d78c1/widgetsnbextension-3.4.2-py2.py3-none-any.whl (2.2MB)
+    100% |--------------------------------| 2.2MB 936kB/s
+Collecting tornado>=4.2 (from ipykernel->jupyter)
+  Downloading https://files.pythonhosted.org/packages/d7/d5/99aff77c15da335e3dbf30254b304a526494dca8e51b4b47419772e35a4e/tornado-5.1.1-cp37-cp37m-win_amd64.whl (455kB)
+    100% |--------------------------------| 460kB 385kB/s
+Collecting jinja2 (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl (126kB)
+    100% |--------------------------------| 133kB 436kB/s
+Collecting testpath (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/be/a4/162f9ebb6489421fe46dcca2ae420369edfee4b563c668d93cb4605d12ba/testpath-0.4.2-py2.py3-none-any.whl (163kB)
+    100% |--------------------------------| 163kB 327kB/s
+Collecting bleach (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/ab/05/27e1466475e816d3001efb6e0a85a819be17411420494a1e602c36f8299d/bleach-3.1.0-py2.py3-none-any.whl (157kB)
+    100% |--------------------------------| 163kB 364kB/s
+Collecting mistune>=0.8.1 (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/09/ec/4b43dae793655b7d8a25f76119624350b4d65eb663459eb9603d7f1f0345/mistune-0.8.4-py2.py3-none-any.whl
+Collecting defusedxml (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/87/1c/17f3e3935a913dfe2a5ca85fa5ccbef366bfd82eb318b1f75dadbf0affca/defusedxml-0.5.0-py2.py3-none-any.whl
+Collecting entrypoints>=0.2.2 (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/ac/c6/44694103f8c221443ee6b0041f69e2740d89a25641e62fb4f2ee568f2f9c/entrypoints-0.3-py2.py3-none-any.whl
+Collecting pandocfilters>=1.4.1 (from nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/4c/ea/236e2584af67bb6df960832731a6e5325fd4441de001767da328c33368ce/pandocfilters-1.4.2.tar.gz
+Collecting terminado>=0.8.1 (from notebook->jupyter)
+  Downloading https://files.pythonhosted.org/packages/2e/20/a26211a24425923d46e1213b376a6ee60dc30bcdf1b0c345e2c3769deb1c/terminado-0.8.1-py2.py3-none-any.whl
+Collecting pyzmq>=17 (from notebook->jupyter)
+  Downloading https://files.pythonhosted.org/packages/08/27/a4b1191f96afa9829fe799e5b3931e5553295659a6a92d96ea0288ae1c2c/pyzmq-17.1.2-cp37-cp37m-win_amd64.whl (990kB)
+    100% |--------------------------------| 993kB 712kB/s
+Collecting prometheus-client (from notebook->jupyter)
+  Downloading https://files.pythonhosted.org/packages/bc/e1/3cddac03c8992815519c5f50493097f6508fa153d067b494db8ab5e9c4ce/prometheus_client-0.5.0.tar.gz
+Collecting Send2Trash (from notebook->jupyter)
+  Downloading https://files.pythonhosted.org/packages/49/46/c3dc27481d1cc57b9385aff41c474ceb7714f7935b1247194adae45db714/Send2Trash-1.5.0-py3-none-any.whl
+Collecting jsonschema!=2.5.0,>=2.4 (from nbformat>=4.2.0->ipywidgets->jupyter)
+  Downloading https://files.pythonhosted.org/packages/77/de/47e35a97b2b05c2fadbec67d44cfcdcd09b8086951b331d82de90d2912da/jsonschema-2.6.0-py2.py3-none-any.whl
+Collecting MarkupSafe>=0.23 (from jinja2->nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/44/6e/41ac9266e3db762dfd9089f6b0d2298c84160f54ef2a7257c17b0e7ec2ec/MarkupSafe-1.1.0-cp37-cp37m-win_amd64.whl
+Collecting webencodings (from bleach->nbconvert->jupyter)
+  Downloading https://files.pythonhosted.org/packages/f4/24/2a3e3df732393fed8b3ebf2ec078f05546de641fe1b667ee316ec1dcf3b7/webencodings-0.5.1-py2.py3-none-any.whl
+Collecting pywinpty>=0.5; os_name == "nt" (from terminado>=0.8.1->notebook->jupyter)
+  Downloading https://files.pythonhosted.org/packages/33/3e/f1329fca2fad22ceb40f4fb971149688ca98d95fa7b73f26403656ae477b/pywinpty-0.5.5-cp37-cp37m-win_amd64.whl (1.3MB)
+    100% |--------------------------------| 1.3MB 740kB/s
+mysql-connector-python 8.0.13 requires protobuf>=3.0.0, which is not installed.
+Installing collected packages: numpy, scipy, kiwisolver, six, cycler, python-dateutil, pyparsing, matplotlib, colorama, parso, jedi, decorator, pickleshare, wcwidth, prompt-toolkit, backcall, pygments, ipython-genutils, traitlets, ipython, tornado, pyzmq, jupyter-core, jupyter-client, ipykernel, qtconsole, jupyter-console, jsonschema, nbformat, pywinpty, terminado, MarkupSafe, jinja2, testpath, webencodings, bleach, mistune, defusedxml, entrypoints, pandocfilters, nbconvert, prometheus-client, Send2Trash, notebook, widgetsnbextension, ipywidgets, jupyter, pytz, pandas, mpmath, sympy, nose
+  The script f2py.exe is installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Running setup.py install for backcall ... done
+  The script pygmentize.exe is installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The scripts iptest.exe, iptest3.exe, ipython.exe and ipython3.exe are installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The scripts jupyter-migrate.exe, jupyter-troubleshoot.exe and jupyter.exe are installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The scripts jupyter-kernel.exe, jupyter-kernelspec.exe and jupyter-run.exe are installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The script jupyter-console.exe is installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The script jsonschema.exe is installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  The script jupyter-trust.exe is installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Running setup.py install for pandocfilters ... done
+  The script jupyter-nbconvert.exe is installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Running setup.py install for prometheus-client ... done
+  The scripts jupyter-bundlerextension.exe, jupyter-nbextension.exe, jupyter-notebook.exe and jupyter-serverextension.exe are installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Running setup.py install for mpmath ... done
+  Running setup.py install for sympy ... done
+  The scripts nosetests-3.4.exe and nosetests.exe are installed in 'C:\Users\Iam\AppData\Roaming\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed MarkupSafe-1.1.0 Send2Trash-1.5.0 backcall-0.1.0 bleach-3.1.0 colorama-0.4.1 cycler-0.10.0 decorator-4.3.2 defusedxml-0.5.0 entrypoints-0.3 ipykernel-5.1.0 ipython-7.2.0 ipython-genutils-0.2.0 ipywidgets-7.4.2 jedi-0.13.2 jinja2-2.10 jsonschema-2.6.0 jupyter-1.0.0 jupyter-client-5.2.4 jupyter-console-6.0.0 jupyter-core-4.4.0 kiwisolver-1.0.1 matplotlib-3.0.2 mistune-0.8.4 mpmath-1.1.0 nbconvert-5.4.1 nbformat-4.4.0 nose-1.3.7 notebook-5.7.4 numpy-1.16.1 pandas-0.24.1 pandocfilters-1.4.2 parso-0.3.3 pickleshare-0.7.5 prometheus-client-0.5.0 prompt-toolkit-2.0.8 pygments-2.3.1 pyparsing-2.3.1 python-dateutil-2.8.0 pytz-2018.9 pywinpty-0.5.5 pyzmq-17.1.2 qtconsole-4.4.3 scipy-1.2.1 six-1.12.0 sympy-1.3 terminado-0.8.1 testpath-0.4.2 tornado-5.1.1 traitlets-4.3.2 wcwidth-0.1.7 webencodings-0.5.1 widgetsnbextension-3.4.2
+You are using pip version 10.0.1, however version 19.0.2 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Iam>
+C:\Users\Iam>
+C:\Users\Iam>
+C:\Users\Iam>
+C:\Users\Iam>
+C:\Users\Iam>
+C:\Users\Iam>python -m pip install --upgrade pip
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/d7/41/34dd96bd33958e52cb4da2f1bf0818e396514fd4f4725a79199564cd0c20/pip-19.0.2-py2.py3-none-any.whl (1.4MB)
+    100% |--------------------------------| 1.4MB 1.2MB/s
+mysql-connector-python 8.0.13 requires protobuf>=3.0.0, which is not installed.
+Installing collected packages: pip
+  Found existing installation: pip 10.0.1
+    Uninstalling pip-10.0.1:
+      Successfully uninstalled pip-10.0.1
+Successfully installed pip-19.0.2
+
+C:\Users\Iam>python -m pip install protobuf
+Collecting protobuf
+  Downloading https://files.pythonhosted.org/packages/77/78/a7f1ce761e2c738e209857175cd4f90a8562d1bde32868a8cd5290d58926/protobuf-3.6.1-py2.py3-none-any.whl (390kB)
+    100% |--------------------------------| 399kB 1.7MB/s
+Requirement already satisfied: setuptools in c:\users\iam\appdata\local\programs\python\python37\lib\site-packages (from protobuf) (39.0.1)
+Requirement already satisfied: six>=1.9 in c:\users\iam\appdata\roaming\python\python37\site-packages (from protobuf) (1.12.0)
+Installing collected packages: protobuf
+Successfully installed protobuf-3.6.1
+
+C:\Users\Iam>
